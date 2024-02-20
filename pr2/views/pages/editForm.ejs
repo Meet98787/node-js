@@ -1,0 +1,81 @@
+<%- include('../partials/header.ejs') %>
+
+  <h1>Edit User</h1>
+  <form action="" method="post">
+    <div>
+      <label class="form-label">
+        Name
+      </label>
+      <input type="text" name="name" value="<%= user.name %>" class="form-control" />
+    </div>
+    <div>
+      <label class="form-label">
+        Email
+      </label>
+      <input type="email" name="email" value="<%= user.email %>" class="form-control" />
+    </div>
+    <div>
+      <label class="form-label">
+        Password
+      </label>
+      <input type="password" name="password" value="<%= user.password %>" class="form-control" />
+    </div>
+    <div>
+      <div>
+        <label class="form-label">
+          Gender
+        </label>
+        <div>
+          <input name="gender" type="radio" value="male" <%= user.gender === 'male' ? 'checked' : '' %> />
+
+          <label class="form-label">
+            Male
+          </label>
+          <input id="female" name="gender" value="female" type="radio" <%= user.gender === 'female' ? 'checked' : '' %> />
+          <label class="form-label">
+            Female
+          </label>
+        </div>
+      </div>
+      <div>
+        <label class="form-label"> Hobbies </label>
+
+        <input type="checkbox" class="form-check-input" name="hobbies" value="sport" <%= user.hobbies.includes('sport')
+          ? 'checked' : '' %> />
+
+
+        <label class="form-label">Sport</label>
+
+        <input class="form-check-input" type="checkbox" name="hobbies" value="music" <%= user.hobbies.includes('music')
+          ? 'checked' : '' %> />
+        <label class="form-label">Music</label>
+
+        <input type="checkbox" class="form-check-input" name="hobbies" value="study" <%= user.hobbies.includes('study')
+          ? 'checked' : '' %> />
+        <label class="form-label">Study</label>
+      </div>
+    </div>
+    <div>
+      <label class="form-label">
+        Address
+      </label> <br>
+      <textarea name="address" class="form-control"><%= user.address %></textarea>
+    </div>
+    <div>
+      <label class="form-label">
+        City
+      </label>
+      <select name="city" class="form-select">
+        <option value="" selected disabled>--select city--</option>
+        <option value="surat" <%= user.city === 'surat' ? 'selected' : '' %>>Surat</option>
+        <option value="bhavanager" <%= user.city === 'bhavanager' ? 'selected' : '' %>>Bhavanager</option>
+        <option value="valsad" <%= user.city === 'valsad' ? 'selected' : '' %>>Valsad</option>
+      </select>
+    </div>
+    <div>
+      <button class="btn btn-primary mt-3" type="submit">
+        Update
+      </button>
+    </div>
+  </form>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,85 @@
+<%-include('../partials/header.ejs')%>
+
+<h1>Add User</h1>
+<form action="" method="post">
+  <div>
+    <label class="form-label"> Name </label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+    />
+  </div>
+  <div>
+    <label class="form-label"> Email </label>
+    <input
+      class="form-control"
+      type="email"
+      name="email"
+    />
+  </div>
+  <div>
+    <label class="form-label"> Password </label>
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+    />
+  </div>
+  <div>
+    <div>
+      <label class="form-label"> Gender </label>
+      <div>
+        <input name="gender" type="radio" value="male" />
+        <label class="form-label"> Male </label>
+        <input name ="gender" value="female" type="radio" />
+        <label class="form-label"> Female </label>
+      </div>
+    </div>
+    <div>
+      <label class="form-label"> hobbies </label>
+      <br />
+      <input
+        type="checkbox"
+        class="form-check-input"
+        name="hobbies"
+        value="sport"
+      />
+      <label class="form-label">Sport</label>
+      <input
+        type="checkbox"
+        class="form-check-input"
+        name="hobbies"
+        value="music"
+      />
+      <label class="form-label">Music</label>
+      <input
+        type="checkbox"
+        class="form-check-input"
+        name="hobbies"
+        value="study"
+      />
+      <label class="form-label">Study</label>
+    </div>
+  </div>
+  <div>
+    <label class="form-label"> Address </label><br />
+    <textarea
+      name="address"
+      class="form-control"
+    ></textarea>
+  </div>
+  <div class="col-4">
+    <label class="form-label"> City </label>
+    <select name="city" class="form-select">
+      <option value="" disabled selected>--select city--</option>
+      <option value="surat">Surat</option>
+      <option value="bhavanager">Bhavanager</option>
+      <option value="valsad">Valsad</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary mt-3">Add</button>
+  </div>
+</form>
+<%-include('../partials/footer.ejs')%>

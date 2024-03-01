@@ -1,10 +1,3 @@
-/**
-* Template Name: Restaurantly
-* Updated: Feb 20 2024 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
@@ -163,15 +156,7 @@
     }
   });
 
-  /**
-   * Preloader
-   */
-  let preloader = select('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
-    });
-  }
+
 
   /**
    * Menu isotope and filter

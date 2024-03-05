@@ -1,0 +1,149 @@
+<%-include('../partials/header.ejs')%>
+
+<div class="container">
+  <h1 class="text-center">Add Book</h1>
+  <form
+    id="form"
+    action=""
+    method="post"
+    onsubmit="return handleForm(this)"
+  >
+      <label class="form-lable">
+        Title
+      </label>
+      <input
+        class="form-control"
+        type="text"
+        name="title"
+      />
+      <p class="text-danger" id="titlee"></p>
+
+
+      <label class="form-lable">
+        Author
+      </label>
+      <input
+        class="form-control"
+        type="text"
+        name="author"
+      />
+      <p class="text-danger" id="authorError"></p>
+
+
+      <label class="form-lable">
+        Book Type
+      </label>
+      <select
+        class="form-select"
+        name="type"
+      >
+        <option value="" disabled selected>
+          Select type
+        </option>
+        <option value="magazine">Magazine</option>
+        <option value="animation">Animation</option>
+        <option value="teaching"> Teaching</option>
+      </select>
+      <p class="text-danger" id="booktypeError"></p>
+
+
+        <label
+          class="form-lable"
+        >
+          Published Year
+        </label>
+        <input
+          class="form-control"
+          type="number"
+          name="published"
+        />
+        <p class="text-danger" id="pyearError"></p>
+        <label class="form-lable">
+          Stock
+        </label>
+        <input
+          class="form-control"
+          type="number"
+          name="stock"
+        />
+        <p class="text-danger" id="stockError"></p>
+        <label class="form-lable" for="price">
+          Book Price
+        </label>
+        <input
+          class="form-control"
+          type="number"
+          name="price"
+        />
+        <p class="text-danger" id="priceError"></p>
+
+
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+      >
+        Add
+      </button>
+
+  </form>
+</div>
+
+<%-include('../partials/footer.ejs')%>
+
+<script>
+  function handleForm(e) {
+    let submit = true;
+    const title = e.title;
+    const author = e.author;
+    const booktype = e.type;
+    const published = e.published;
+    const stock = e.stock;
+    const price = e.price;
+
+    if (title.value === "") {
+      document.getElementById("titlee").innerHTML = "Please enter book title";
+      submit = false;
+    } else {
+      document.getElementById("titlee").innerHTML = "";
+    }
+
+    if (author.value === "") {
+      document.getElementById("authorError").innerHTML = "Please enter book author";
+      submit = false;
+    } else {
+      document.getElementById("authorError").innerHTML = "";
+    }
+
+    if (booktype.value === "") {
+      document.getElementById("booktypeError").innerHTML = "Please select book type";
+      submit = false;
+    } else {
+      document.getElementById("booktypeError").innerHTML = "";
+    }
+
+    if (published.value === "") {
+      document.getElementById("pyearError").innerHTML = "Please enter published year";
+      submit = false;
+    } else {
+      document.getElementById("pyearError").innerHTML = "";
+    }
+
+    if (stock.value === "") {
+      document.getElementById("stockError").innerHTML = "Please enter total stock";
+      submit = false;
+    } else {
+      document.getElementById("stockError").innerHTML = "";
+    }
+
+    if (price.value === "") {
+      document.getElementById("priceError").innerHTML = "Please enter book value";
+      submit = false;
+    } else {
+      document.getElementById("priceError").innerHTML = "";
+    }
+
+    return submit;
+  }
+</script>
+

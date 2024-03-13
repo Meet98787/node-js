@@ -1,109 +1,109 @@
 <%-include('../partials/header.ejs')%>
 
-  <div class="container">
-    <h1 class="text-center">Add Movie</h1>
-    <form id="form" action="/add" method="post" onsubmit="return handleForm(this)" enctype="multipart/form-data">
-      <label class="form-lable">
-        Movie Title
-      </label>
-      <input class="form-control" type="text" name="title" />
-      <p class="text-danger" id="titlee"></p>
+<div class="container">
+  <h1 class="text-center">Add Movie</h1>
+  <form id="form" action="/add" method="post" onsubmit="return handleForm(this)" enctype="multipart/form-data">
+    <label class="form-lable">
+      Movie Title
+    </label>
+    <input class="form-control" type="text" name="title" />
+    <p class="text-danger" id="titlee"></p>
 
 
-      <label class="form-lable">
-        Description
-      </label>
-      <input class="form-control" type="text" name="description" />
-      <p class="text-danger" id="authorError"></p>
+    <label class="form-lable">
+      Description
+    </label>
+    <input class="form-control" type="text" name="description" />
+    <p class="text-danger" id="descriptionError"></p>
 
 
-      <label class="form-lable">
-        genre
-      </label>
-      <select class="form-select" name="genre">
-        <option value="" disabled selected>
-          genre
-        </option>
-        <option value="action">Action</option>
-        <option value="comedy">Comedy</option>
-        <option value="romance"> Romance</option>
-      </select>
-      <p class="text-danger" id="booktypeError"></p>
+    <label class="form-lable">
+      Genre
+    </label>
+    <select class="form-select" name="genre">
+      <option value="" disabled selected>
+        Select genre
+      </option>
+      <option value="action">Action</option>
+      <option value="comedy">Comedy</option>
+      <option value="romance">Romance</option>
+    </select>
+    <p class="text-danger" id="genreError"></p>
 
 
-      <label class="form-lable">
-        Published Year
-      </label>
-      <input class="form-control" type="number" name="release_year" />
-      <p class="text-danger" id="pyearError"></p>
-      <label class="form-lable">
-        Rating
-      </label>
-      <input class="form-control" type="number" name="rating" />
-      <p class="text-danger" id="stockError"></p>
-      
-      <input type="file" name="file" id="" required>
+    <label class="form-lable">
+      Published Year
+    </label>
+    <input class="form-control" type="number" name="release_year" />
+    <p class="text-danger" id="pyearError"></p>
 
-      <button class="btn btn-primary" type="submit">
-        Add
-      </button>
+    <label class="form-lable">
+      Rating
+    </label>
+    <input class="form-control" type="text" name="rating" />
+    <p class="text-danger" id="ratingError"></p>
+    
+    <input type="file" name="file" id="" required>
+    
+    <button class="btn btn-primary" type="submit">
+      Add
+    </button>
 
-    </form>
-  </div>
+  </form>
+</div>
 
-  <%-include('../partials/footer.ejs')%>
+<%-include('../partials/footer.ejs')%>
 
-    <script>
-      function handleForm(e) {
-        let submit = true;
-        const title = e.title;
-        const description = e.author;
-        const release_year = e.type;
-        const genre = e.published;
-        const rating = e.stock;
+<script>
+  function handleForm(e) {
+    let submit = true;
+    const title = e.elements.title;
+    const description = e.elements.description;
+    const genre = e.elements.genre;
+    const release_year = e.elements.release_year;
+    const rating = e.elements.rating;
 
-        if (title.value === "") {
-          document.getElementById("titlee").innerHTML = "Please enter book title";
-          submit = false;
-        } else {
-          document.getElementById("titlee").innerHTML = "";
-        }
+    if (title.value === "") {
+      document.getElementById("titlee").innerHTML = "Please enter Movie title";
+      submit = false;
+    } else {
+      document.getElementById("titlee").innerHTML = "";
+    }
 
-        if (author.value === "") {
-          document.getElementById("authorError").innerHTML = "Please enter book author";
-          submit = false;
-        } else {
-          document.getElementById("authorError").innerHTML = "";
-        }
+    if (description.value === "") {
+      document.getElementById("descriptionError").innerHTML = "Please enter description";
+      submit = false;
+    } else {
+      document.getElementById("descriptionError").innerHTML = "";
+    }
 
-        if (booktype.value === "") {
-          document.getElementById("booktypeError").innerHTML = "Please select book type";
-          submit = false;
-        } else {
-          document.getElementById("booktypeError").innerHTML = "";
-        }
+    if (genre.value === "") {
+      document.getElementById("genreError").innerHTML = "Please select genre";
+      submit = false;
+    } else {
+      document.getElementById("genreError").innerHTML = "";
+    }
 
-        if (published.value === "") {
-          document.getElementById("pyearError").innerHTML = "Please enter published year";
-          submit = false;
-        } else {
-          document.getElementById("pyearError").innerHTML = "";
-        }
+    if (release_year.value === "") {
+      document.getElementById("pyearError").innerHTML = "Please enter release year";
+      submit = false;
+    } else {
+      document.getElementById("pyearError").innerHTML = "";
+    }
 
-        if (stock.value === "") {
-          document.getElementById("stockError").innerHTML = "Please enter total stock";
-          submit = false;
-        } else {
-          document.getElementById("stockError").innerHTML = "";
-        }
-
-        if (price.value === "") {
-          document.getElementById("priceError").innerHTML = "Please enter book value";
-          submit = false;
-        } else {
-          document.getElementById("priceError").innerHTML = "";
-        }
-
-        return submit;
+    if (rating.value === "") {
+      document.getElementById("ratingError").innerHTML = "Please enter rating";
+      submit = false;
+    } else {
+      if(rating.value >= 0 && rating.value <= 10){
+        document.getElementById("ratingError").innerHTML = "";
+      }else{
+        document.getElementById("ratingError").innerHTML = "Plese enter rating in 0 to 10";
+      submit = false;
       }
-    </script>
+      
+    }
+
+    return submit;
+  }
+</script>

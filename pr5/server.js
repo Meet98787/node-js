@@ -84,7 +84,15 @@ app.post('/edit/:id', async (req, res) => {
             const movie = await MovieModal.updateOne({ _id: id }, details);
             res.redirect('/');
         } else {
-
+            var details = {
+                title: req.body.title,
+                description: req.body.description,
+                release_year: req.body.release_year,
+                genre: req.body.genre,
+                rating: req.body.rating,
+            };
+            const movie = await MovieModal.updateOne({ _id: id }, details);
+            res.redirect('/');
         }
     });
 });

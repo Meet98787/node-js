@@ -1,0 +1,84 @@
+<%-include('../partials/header.ejs')%>
+
+<div class="container">
+  <h1 class="text-center">Add Movie</h1>
+  <form id="form" action="/add" method="post" onsubmit="return handleForm(this)" enctype="multipart/form-data">
+    <label class="form-lable">
+      Blog Title
+    </label>
+    <input class="form-control" type="text" name="title" />
+    <p class="text-danger" id="titlee"></p>
+
+
+    <label class="form-lable">
+      Description
+    </label>
+    <input class="form-control" type="text" name="description" />
+    <p class="text-danger" id="descriptionError"></p>
+
+
+
+    <label class="form-lable">
+      Date
+    </label>
+    <input class="form-control" type="datetime-local" name="date" id="dateInput" hidden/>
+    <p class="text-danger" id="dateError"></p>
+
+    <!-- <label class="form-lable">
+      Username
+    </label> -->
+    <input class="form-control" type="text" name="username" value="<%=user.name%>" hidden/>
+    <!-- <p class="text-danger" id="usernameError"></p> -->
+
+    <input type="file" name="file" id="" required>
+
+    <button class="btn btn-primary" type="submit">
+      Add
+    </button>
+
+  </form>
+</div>
+
+<%-include('../partials/footer.ejs')%>
+
+<script>
+  function handleForm(e) {
+    let submit = true;
+    const title = e.elements.title;
+    const description = e.elements.description;
+    const date = e.elements.date;
+    const username = e.elements.username;
+
+    if (title.value === "") {
+      document.getElementById("titlee").innerHTML = "Please enter Movie title";
+      submit = false;
+    } else {
+      document.getElementById("titlee").innerHTML = "";
+    }
+
+    if (description.value === "") {
+      document.getElementById("descriptionError").innerHTML = "Please enter description";
+      submit = false;
+    } else {
+      document.getElementById("descriptionError").innerHTML = "";
+    }
+
+    if (date.value === "") {
+      document.getElementById("dateError").innerHTML = "Please enter date";
+      submit = false;
+    } else {
+      document.getElementById("dateError").innerHTML = "";
+    }
+
+    if (username.value === "") {
+      document.getElementById("usernameError").innerHTML = "Please enter username";
+      submit = false;
+    } else {
+      document.getElementById("usernameError").innerHTML = "";
+    }
+
+    return submit;
+  }
+
+  document.getElementById('dateInput').value = new Date().toISOString().slice(0, 16);
+</script>

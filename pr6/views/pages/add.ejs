@@ -18,17 +18,11 @@
 
 
 
-    <label class="form-lable">
-      Date
-    </label>
-    <input class="form-control" type="datetime-local" name="date" id="dateInput" hidden/>
-    <p class="text-danger" id="dateError"></p>
+    <input class="form-control" type="text" name="date" id="dateInput" hidden/>
 
-    <!-- <label class="form-lable">
-      Username
-    </label> -->
+
     <input class="form-control" type="text" name="username" value="<%=user.name%>" hidden/>
-    <!-- <p class="text-danger" id="usernameError"></p> -->
+  
 
     <input type="file" name="file" id="" required>
 
@@ -46,11 +40,9 @@
     let submit = true;
     const title = e.elements.title;
     const description = e.elements.description;
-    const date = e.elements.date;
-    const username = e.elements.username;
 
     if (title.value === "") {
-      document.getElementById("titlee").innerHTML = "Please enter Movie title";
+      document.getElementById("titlee").innerHTML = "Please enter title";
       submit = false;
     } else {
       document.getElementById("titlee").innerHTML = "";
@@ -63,22 +55,10 @@
       document.getElementById("descriptionError").innerHTML = "";
     }
 
-    if (date.value === "") {
-      document.getElementById("dateError").innerHTML = "Please enter date";
-      submit = false;
-    } else {
-      document.getElementById("dateError").innerHTML = "";
-    }
-
-    if (username.value === "") {
-      document.getElementById("usernameError").innerHTML = "Please enter username";
-      submit = false;
-    } else {
-      document.getElementById("usernameError").innerHTML = "";
-    }
 
     return submit;
   }
-
-  document.getElementById('dateInput').value = new Date().toISOString().slice(0, 16);
+  var currentdate = new Date();
+var datetime =currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear() + "  "+ currentdate.getHours() + ":" + currentdate.getMinutes() ;
+  document.getElementById('dateInput').value = datetime;
 </script>

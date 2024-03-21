@@ -80,6 +80,9 @@ app.post('/add', async (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
+    if(req.cookies.user){
+        res.redirect('/add')
+    }
     res.render('pages/signup');
 });
 
@@ -91,7 +94,8 @@ app.post('/signup', async (req, res) => {
         console.log(result);
         res.redirect('/login')
     } catch (error) {
-        
+        res.redirect('/signup')
+        console.log("Signup again")
     }
 });
 
@@ -110,8 +114,14 @@ app.post('/login',async function(req,res){
             let minute =60 *10000;
             res.cookie('user',user,{maxAge:minute})
             res.redirect('/add')
+        }else{
+            res.redirect('/login')
         }
+    }else{
+
+        res.redirect('/login')
     }
+
 })
 
 app.get('/signout',function(req,res){

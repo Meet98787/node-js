@@ -1,0 +1,64 @@
+<%-include('../partials/header.ejs')%>
+
+<div class="container">
+  <h1 class="text-center">Add Movie</h1>
+  <form id="form" action="/add" method="post" onsubmit="return handleForm(this)" enctype="multipart/form-data">
+    <label class="form-lable">
+      Blog Title
+    </label>
+    <input class="form-control" type="text" name="title" />
+    <p class="text-danger" id="titlee"></p>
+
+
+    <label class="form-lable">
+      Description
+    </label>
+    <input class="form-control" type="text" name="description" />
+    <p class="text-danger" id="descriptionError"></p>
+
+
+
+    <input class="form-control" type="text" name="date" id="dateInput"/>
+
+
+    <input class="form-control" type="text" name="username" value="<%=user.name%>" hidden/>
+  
+
+    <input type="file" name="file" id="" required>
+
+    <button class="btn btn-primary" type="submit">
+      Add
+    </button>
+
+  </form>
+</div>
+
+<%-include('../partials/footer.ejs')%>
+
+<script>
+  function handleForm(e) {
+    let submit = true;
+    const title = e.elements.title;
+    const description = e.elements.description;
+
+    if (title.value === "") {
+      document.getElementById("titlee").innerHTML = "Please enter title";
+      submit = false;
+    } else {
+      document.getElementById("titlee").innerHTML = "";
+    }
+
+    if (description.value === "") {
+      document.getElementById("descriptionError").innerHTML = "Please enter description";
+      submit = false;
+    } else {
+      document.getElementById("descriptionError").innerHTML = "";
+    }
+
+
+    return submit;
+  }
+  var currentdate = new Date();
+  var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + "  " + currentdate.getHours() + ":" + currentdate.getMinutes();
+  document.getElementById('dateInput').value = datetime;
+</script>

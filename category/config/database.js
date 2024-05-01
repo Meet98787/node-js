@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const db = async () => {
     await mongoose.connect(
-        "mongodb://127.0.0.1:27017/calegory"
+        "mongodb+srv://meetlakhani:12345@cluster0.gkkdkdf.mongodb.net/category"
     );
     console.log("database connected.");
 }
